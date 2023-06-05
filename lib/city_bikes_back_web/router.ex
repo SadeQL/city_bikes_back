@@ -20,6 +20,15 @@ defmodule CityBikesBackWeb.Router do
     get "/", PageController, :home
   end
 
+  scope "/api", CityBikesBackWeb do
+    pipe_through :api
+
+    get "/networks", NetworkController, :index
+    post "/networks", NetworkController, :create
+    get "/networks/:id", NetworkController, :show
+    get "/stations", StationController, :index
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", CityBikesBackWeb do
   #   pipe_through :api
